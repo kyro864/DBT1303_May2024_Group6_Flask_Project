@@ -77,10 +77,3 @@ def conference_attendee():
     data = ConferenceAttendee.query.all()
     return render_template('conferece_attendees.html', data=data)
 
-
-
-# @app.route('/secure')
-# def secure_page():
-#     # Implement secure page logic here
-#     return 'Secure page content'
-
