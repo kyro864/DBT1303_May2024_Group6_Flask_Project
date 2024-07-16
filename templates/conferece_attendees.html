@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Attendees</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('climate_data') }}">Climate Data</a></li>
+            <li><a href="{{ url_for('record_data') }}">Record Data</a></li>
+            <li><a href="{{ url_for('attend_conference') }}">Attend Conference</a></li>
+            <li><a href="{{ url_for('conference_attendee') }}">Conference Attendees</a></li>
+        </ul>
+    </div>
+    <h1>Conference Attendees</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+        </tr>
+        {% for entry in data %}
+        <tr>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

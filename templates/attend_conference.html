@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attend Conference</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('climate_data') }}">Climate Data</a></li>
+            <li><a href="{{ url_for('record_data') }}">Record Data</a></li>
+            <li><a href="{{ url_for('attend_conference') }}">Attend Conference</a></li>
+            <li><a href="{{ url_for('conference_attendee') }}">Conference Attendees</a></li>
+        </ul>
+    </div>
+    <h1>Submit Personal Details</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ form.name.label }} {{ form.name }}</p>
+        <p>{{ form.email.label }} {{ form.email }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>

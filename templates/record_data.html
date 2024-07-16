@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Data Submission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('climate_data') }}">Climate Data</a></li>
+            <li><a href="{{ url_for('record_data') }}">Record Data</a></li>
+            <li><a href="{{ url_for('attend_conference') }}">Attend Conference</a></li>
+            <li><a href="{{ url_for('conference_attendee') }}">Conference Attendees</a></li>
+        </ul>
+    </div>
+    <h1>Submit Climate Data</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ form.location.label }} {{ form.location }}</p>
+        <p>{{ form.temperature.label }} {{ form.temperature }}</p>
+        <p>{{ form.humidity.label }} {{ form.humidity }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>
